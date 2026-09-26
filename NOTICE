@@ -1,0 +1,57 @@
+NOTICE
+
+This product includes software and data developed by third parties. The
+statements below are reproduced from the distributors of those components.
+No third-party data are redistributed with this repository; only the access
+routes and the terms under which they were obtained are recorded.
+
+--------------------------------------------------------------------------------
+Runtime and development packages
+--------------------------------------------------------------------------------
+
+PyTorch                 BSD 3-Clause      https://github.com/pytorch/pytorch
+NumPy                   BSD 3-Clause      https://github.com/numpy/numpy
+SciPy                   BSD 3-Clause      https://github.com/scipy/scipy
+scikit-learn            BSD 3-Clause      https://github.com/scikit-learn/scikit-learn
+PyYAML                  MIT               https://github.com/yaml/pyyaml
+matplotlib (optional)   PSF-based        https://github.com/matplotlib/matplotlib
+
+--------------------------------------------------------------------------------
+Public auxiliary imaging collections
+--------------------------------------------------------------------------------
+
+National Lung Screening Trial (NLST) imaging collection, TCIA
+  Version 3, open access, CC BY 4.0, no application or credential required.
+  DOI 10.7937/TCIA.HMQ8-J677
+  https://www.cancerimagingarchive.net/collection/nlst/
+  Used in this release for encoder pretraining only.
+
+LIDC-IDRI, TCIA
+  Version 4, open access, CC BY 3.0, no application or credential required.
+  DOI 10.7937/K9/TCIA.2015.LO9QL9SX
+  https://www.cancerimagingarchive.net/collection/lidc-idri/
+  Used in this release for nodule and segmentation pretraining only.
+
+LUNA16 release, Zenodo record 3723295
+  Version 3, open access, CC BY 4.0, no application or credential required.
+  DOI 10.5281/zenodo.3723295
+  https://zenodo.org/records/3723295
+  Used in this release for nodule-detection pretraining only.
+
+Learn2Reg CT lung registration data, Zenodo record 3835682
+  Version 1, open access, CC BY 4.0, no application or credential required.
+  DOI 10.5281/zenodo.3835682
+  https://zenodo.org/records/3835682
+  Used in this release for registration and deformation sanity checks.
+
+Dataset versions, licences and roles follow the manuscript's inventory of
+public auxiliary collections.
+
+--------------------------------------------------------------------------------
+Clinical cohorts
+--------------------------------------------------------------------------------
+
+The development, prospective, external-validation and calibration cohorts are
+held by the originating clinical sites. They are anonymised, are not
+redistributed here, and remain available only from the data holders under a
+data-use agreement. No individual-level clinical data ship with this release.

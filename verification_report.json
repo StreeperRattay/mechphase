@@ -1,0 +1,569 @@
+{
+  "checks": [
+    {
+      "detail": {
+        "claims": 17,
+        "missing": []
+      },
+      "evidence": "17 claims mapped to existing source files",
+      "name": "paper_claim_mapping",
+      "status": "PASS"
+    },
+    {
+      "detail": {
+        "missing": []
+      },
+      "evidence": "57 claim symbols resolve to files on disk",
+      "name": "claim_symbol_resolution",
+      "status": "PASS"
+    },
+    {
+      "detail": {
+        "mismatched": {},
+        "threshold_mismatches": {}
+      },
+      "evidence": "arm composition, thresholds and Table S8 accounting match the manuscript: 8 counts and 7 thresholds checked, 0 mismatches",
+      "name": "reported_constants_match_manuscript",
+      "status": "PASS"
+    },
+    {
+      "detail": {
+        "magnitude_gap": 4.440892098500626e-16,
+        "phase_gap": 0.0,
+        "tangent_gap": 0.0
+      },
+      "evidence": "|G*| gap 4.441e-16, loss-tangent round trip gap 0.000e+00, phase-lag gap 0.000e+00 against the hand-derived relations |G*| = G and arg G* = atan(eta)",
+      "name": "constant_phase_constitutive_relations",
+      "status": "PASS"
+    },
+    {
+      "detail": {
+        "defect": 1.698522477768992e-16,
+        "independent_gap": 0.0
+      },
+      "evidence": "relative defect 1.699e-16 and independent max-entry gap 0.000e+00 for G -> 3.7G at fixed loss tangent",
+      "name": "stress_scale_homogeneity",
+      "status": "PASS"
+    },
+    {
+      "detail": {
+        "interior_energy": 1.000000000001e-12,
+        "residual_max": 1.0000015781057513e-12,
+        "shell_inclusive_energy": 1.000000000001e-12,
+        "traction_gap": 3.141925489534116e-16
+      },
+      "evidence": "discrete divergence max 1.000e-12 on the whole grid; recovered axial traction 11.307440900921 against the analytic 11.307440900921 (relative 3.142e-16); interior energy 1.000e-12 against shell-inclusive 1.000e-12",
+      "name": "manufactured_equilibrium_solution",
+      "status": "PASS"
+    },
+    {
+      "detail": {
+        "displacement_gap": 0.0,
+        "energy_gaps": [
+          0.0,
+          2.76685341304983e-13,
+          3.0941915696303113e-13
+        ],
+        "strain_gap": 0.0,
+        "traction_gaps": [
+          0.0,
+          1.7763568394002506e-16,
+          0.0
+        ]
+      },
+      "evidence": "residual energy follows c^2 to 3.094e-13, traction follows c to 1.776e-16, displacement gap 0.000e+00 and strain gap 0.000e+00 over the family (1.0, 2.5, 4.0)",
+      "name": "scale_non_identifiability",
+      "status": "PASS"
+    },
+    {
+      "detail": {
+        "gap": 0.0,
+        "wave_reference": 0.31426219557975477
+      },
+      "evidence": "max gap 0.000e+00 between the operator determinant and a hand-written central-difference determinant of I + grad u on a uniaxial state",
+      "name": "jacobian_determinant_closed_form",
+      "status": "PASS"
+    },
+    {
+      "detail": {
+        "closure": {
+          "ratio": 19.739655770763342,
+          "spoiled_energy": 0.008693103101381177,
+          "truth_energy": 0.0004403877758728014,
+          "truth_magnitude_max": 0.06850730245085375
+        },
+        "expected_change": 0.05823822498492299,
+        "observed_change": 0.05823822498492304,
+        "truth": 2.220446049250313e-16
+      },
+      "evidence": "residual at the generated state 2.220e-16; under a ten per cent Jacobian perturbation the residual moves by 5.823822e-02 against the hand-derived 5.823822e-02 (relative 8.340e-16)",
+      "name": "mass_coupling_closure",
+      "status": "PASS"
+    },
+    {
+      "detail": {
+        "interior_error": 1.5178830414797062e-18,
+        "interior_scale": 0.0018994671275186115,
+        "shell_error": 5.586668022113564e-05
+      },
+      "evidence": "on a cubic axial field the centred stencil reproduces the analytic divergence to 1.518e-18 over the interior (scale 1.899e-03), while the one-sided shell rows differ by 5.587e-05",
+      "name": "interior_residual_floor",
+      "status": "PASS"
+    },
+    {
+      "detail": {
+        "ratio_gap": 0.0,
+        "tangent_gap": 0.0
+      },
+      "evidence": "ratio gap 0.000e+00 and loss-tangent gap 0.000e+00 after rescaling both the lesion and the parenchymal reference by the same factor",
+      "name": "scale_free_estimand_invariance",
+      "status": "PASS"
+    },
+    {
+      "detail": {
+        "brute_force": 1.0,
+        "neighbourhood_gap": 6.661338147750939e-16,
+        "observed": 1.0
+      },
+      "evidence": "certified fraction 1.000000 against a SciPy uniform-filter recomputation 1.000000; the two neighbourhood means agree to 6.661e-16",
+      "name": "certificate_thresholding",
+      "status": "PASS"
+    },
+    {
+      "detail": {
+        "euler_gap": 0.0,
+        "finite_difference_gap": 8.373301812259924e-09
+      },
+      "evidence": "Euler identity d r / d log G equals r to 0.000e+00; the analytic d r / d eta matches a central finite difference to 8.373e-09 relative",
+      "name": "certificate_sensitivity_closed_form",
+      "status": "PASS"
+    },
+    {
+      "detail": {
+        "expected": 0.6776666666666666,
+        "observed": 0.6776666666666666
+      },
+      "evidence": "rank-based area 0.677666666667 against scikit-learn 0.677666666667",
+      "name": "auc_independent_library",
+      "status": "PASS"
+    },
+    {
+      "detail": {
+        "area": 0.6426209177346011,
+        "expected": 0.0030911156397648303,
+        "observed": 0.0030911156397648303
+      },
+      "evidence": "variance 3.091115639765e-03 against a double-loop placement computation 3.091115639765e-03",
+      "name": "delong_variance_independent",
+      "status": "PASS"
+    },
+    {
+      "detail": {
+        "difference": 0.07495629370629364,
+        "p_value": 1.7633193136745717e-06,
+        "standard_error": 0.015685123662548404
+      },
+      "evidence": "paired difference 0.074956293706, standard error 1.568512e-02, z 4.778814, p 0.000002; the two score vectors differ in mean by 0.276737 on the positive class",
+      "name": "delong_paired_difference_independent",
+      "status": "PASS"
+    },
+    {
+      "detail": {
+        "adjusted": [
+          0.0056,
+          0.0084,
+          0.0186,
+          0.0186,
+          0.0186,
+          0.093,
+          0.18,
+          0.18
+        ],
+        "gap": 0.0
+      },
+      "evidence": "largest deviation from a from-scratch step-down computation 0.000e+00 over 8 contrasts",
+      "name": "holm_bonferroni_independent",
+      "status": "PASS"
+    },
+    {
+      "detail": {
+        "expected": 0.8917091457852684,
+        "mean_squares": [
+          4.4083054213915736,
+          0.10014467676571218,
+          0.17326512663378893
+        ],
+        "observed": 0.8917091457852684
+      },
+      "evidence": "ICC(2,1) 0.891709145785 against a mean-square assembly written from the definition 0.891709145785",
+      "name": "icc_two_one_independent",
+      "status": "PASS"
+    },
+    {
+      "detail": {
+        "auc": 0.6479166666666667,
+        "expected": 0.2416666666666667,
+        "observed": 0.2416666666666667,
+        "threshold": 0.0038569096024806404
+      },
+      "evidence": "recovered Youden index 0.241666666667 against the exhaustive maximum 0.241666666667",
+      "name": "operating_point_independent",
+      "status": "PASS"
+    },
+    {
+      "detail": {
+        "expected": 0.43333333333333335,
+        "observed": 0.43333333333333335,
+        "treat_all": 0.33333333333333337
+      },
+      "evidence": "net benefit 0.433333333333 against the hand-derived expression 0.433333333333; treat-all 0.333333333333",
+      "name": "net_benefit_independent",
+      "status": "PASS"
+    },
+    {
+      "detail": {
+        "expected": 0.12325524141577614,
+        "observed": 0.12325524141577614
+      },
+      "evidence": "standardised difference 0.123255241416 against the pooled-variance expression 0.123255241416",
+      "name": "standardised_difference_independent",
+      "status": "PASS"
+    },
+    {
+      "detail": {
+        "expected": 0.7924792300115399,
+        "observed": 0.7924792300115399
+      },
+      "evidence": "coefficient 0.792479230012 against SciPy 0.792479230012",
+      "name": "spearman_independent",
+      "status": "PASS"
+    },
+    {
+      "detail": {
+        "strata": {
+          "size_10_20mm": 520,
+          "size_6_10mm": 196,
+          "size_gt_20mm": 297,
+          "size_le_6mm": 107
+        },
+        "total": 1120
+      },
+      "evidence": "1120 lesions assigned across 4 size strata with none left unassigned",
+      "name": "size_strata_partition",
+      "status": "PASS"
+    },
+    {
+      "detail": {
+        "shape": [
+          3,
+          16
+        ]
+      },
+      "evidence": "descriptor matrix shaped (3, 16) on 3 generated examinations, all finite=True",
+      "name": "radiomic_descriptor_extraction",
+      "status": "PASS"
+    },
+    {
+      "detail": {
+        "shapes": {
+          "displacement": [
+            1,
+            3,
+            16,
+            12,
+            12
+          ],
+          "expiration": [
+            1,
+            16,
+            12,
+            12
+          ],
+          "inspiration": [
+            1,
+            16,
+            12,
+            12
+          ],
+          "jacobian": [
+            1,
+            16,
+            12,
+            12
+          ],
+          "lesion": [
+            1,
+            16,
+            12,
+            12
+          ],
+          "parenchyma": [
+            1,
+            16,
+            12,
+            12
+          ],
+          "uncertainty": [
+            1,
+            16,
+            12,
+            12
+          ]
+        }
+      },
+      "evidence": "generated records carry 7 required fields with shapes {'inspiration': (1, 16, 12, 12), 'expiration': (1, 16, 12, 12), 'displacement': (1, 3, 16, 12, 12), 'uncertainty': (1, 16, 12, 12), 'parenchyma': (1, 16, 12, 12), 'lesion': (1, 16, 12, 12), 'jacobian': (1, 16, 12, 12)}; labels [1, 0, 1, 0]; the reported analysis set holds 1120 cases inside the 1247-record prospective arm",
+      "name": "cohort_schema_compatibility",
+      "status": "PASS"
+    },
+    {
+      "detail": {
+        "ratio": 145.95048493097903,
+        "spoiled_energy": 0.008948669638305337,
+        "truth_energy": 6.131305176914775e-05,
+        "truth_magnitude_max": 0.03056998113515646
+      },
+      "evidence": "residual energy at the generated state 6.131e-05 against 8.949e-03 after a thirty-five per cent perturbation of the lesion modulus (ratio 145.950)",
+      "name": "generator_closure",
+      "status": "PASS"
+    },
+    {
+      "detail": {
+        "certificate": {
+          "abstained": 0.0,
+          "abstained_auc": NaN,
+          "abstention_rate": 0.0,
+          "all_auc": 0.375,
+          "all_cases": 8.0,
+          "certified": 8.0,
+          "certified_auc": 0.375,
+          "median_certified_fraction": 1.0
+        },
+        "transfer": {
+          "development": NaN,
+          "external": NaN,
+          "external_gap": NaN,
+          "internal_validation": NaN,
+          "prospective": 0.5,
+          "site_high": 0.5,
+          "site_low": 0.5
+        }
+      },
+      "evidence": "certificate behaviour, decision curve, transfer report, region shift, phenotype table, reader study, in-vitro report, test inventory and accounting all executed on 8 generated records",
+      "name": "analysis_layer_execution",
+      "status": "PASS"
+    },
+    {
+      "detail": {
+        "shapes": {
+          "certified": [
+            4,
+            16,
+            12,
+            12
+          ],
+          "certified_fraction": [
+            4
+          ],
+          "coupling_energy": [
+            4
+          ],
+          "features": [
+            4,
+            44
+          ],
+          "logits": [
+            4
+          ],
+          "modulus": [
+            4,
+            16,
+            12,
+            12
+          ],
+          "ratio": [
+            4,
+            16,
+            12,
+            12
+          ],
+          "regularisation": [
+            4
+          ],
+          "residual_energy": [
+            4
+          ],
+          "tangent": [
+            4,
+            16,
+            12,
+            12
+          ]
+        }
+      },
+      "evidence": "forward pass produced 10 finite tensors; logits (4,), ratio (4, 16, 12, 12), certified (4, 16, 12, 12)",
+      "name": "framework_forward_execution",
+      "status": "PASS"
+    },
+    {
+      "detail": {
+        "losses": {
+          "full": 2.5520272254943848,
+          "without_cif": 2.100998640060425,
+          "without_cpr": 4.498499870300293,
+          "without_fic": 1.5350370407104492,
+          "without_sir": 0.3618736267089844,
+          "without_tmc": 0.7518906593322754
+        }
+      },
+      "evidence": "all six component configurations produce a finite composite objective: full=2.552027, without_cpr=4.498500, without_sir=0.361874, without_tmc=0.751891, without_cif=2.100999, without_fic=1.535037",
+      "name": "component_switches_execution",
+      "status": "PASS"
+    },
+    {
+      "detail": {
+        "gradient_norm": 64.87133993181526,
+        "tensors_with_gradient": 92,
+        "total_tensors": 96
+      },
+      "evidence": "92 of 96 parameter tensors received a gradient, total norm 6.487134e+01, all finite=True",
+      "name": "loss_and_backward_execution",
+      "status": "PASS"
+    },
+    {
+      "detail": {
+        "change": 0.158586785197258
+      },
+      "evidence": "largest parameter change after one step 1.585868e-01; parameter digest moved from 1807345762dc to 412d1081392d",
+      "name": "parameter_update_execution",
+      "status": "PASS"
+    },
+    {
+      "detail": {
+        "digest": "1807345762dccb48d8638f2dffa36376e36a4158a5b4210ce12ddf80e4db0d04",
+        "seed": 11,
+        "step": 7
+      },
+      "evidence": "parameter digest 1807345762dc preserved across a save and a load that followed a zeroing of the live parameters; checkpoint reports step 7 and seed 11; mode 644",
+      "name": "checkpoint_round_trip_execution",
+      "status": "PASS"
+    },
+    {
+      "detail": {
+        "final": 0.001353194620605791,
+        "history": [
+          2.5520272254943848,
+          3.8477134704589844,
+          0.5788294672966003,
+          0.049541786313056946,
+          2.866846799850464,
+          0.004864162765443325,
+          0.4268123507499695,
+          0.289188414812088,
+          0.014177809469401836,
+          0.003253970993682742,
+          0.00016113967285491526,
+          0.0001528929715277627,
+          0.0008784063975326717,
+          0.0006490956293419003,
+          1.5872515439987183,
+          0.010288076475262642,
+          0.0003578257455956191,
+          0.00027009641053155065,
+          0.3007891774177551,
+          0.0058175623416900635,
+          0.00021817345987074077,
+          0.004616735968738794,
+          0.00035612069768831134,
+          0.00022174835612531751
+        ],
+        "initial": 1.7570279873907566
+      },
+      "evidence": "objective moved from 1.757028 to 0.001353 over 24 steps on one batch (best 0.000153, worst 3.847713)",
+      "name": "single_batch_overfit_execution",
+      "status": "PASS"
+    },
+    {
+      "detail": {
+        "epochs": 3,
+        "loss": [
+          3.081350803375244,
+          3.0441291332244873,
+          15.23692512512207,
+          20.200185775756836,
+          34.625701904296875,
+          51.874271392822266
+        ],
+        "parameter_change": 0.18385207653045654,
+        "steps": 6
+      },
+      "evidence": "6 optimiser steps over 3 epochs, loss history [3.08135, 3.04413, 15.23693, 20.20019, 34.6257, 51.87427], largest parameter change 1.838521e-01, checkpoint step 6",
+      "name": "minimal_training_loop_execution",
+      "status": "PASS"
+    },
+    {
+      "detail": {},
+      "evidence": "the 4 recorded collection links were not probed: reachability is a property of the network rather than of the release, so the live probe is off by default and pass --probe-links to probe them from this host",
+      "name": "public_dataset_links",
+      "status": "NOT_RUN"
+    },
+    {
+      "detail": {},
+      "evidence": "All checks passed!",
+      "name": "ruff",
+      "status": "PASS"
+    },
+    {
+      "detail": {},
+      "evidence": "Success: no issues found in 89 source files",
+      "name": "mypy_strict",
+      "status": "PASS"
+    },
+    {
+      "detail": {},
+      "evidence": ".....                                                                    [100%]",
+      "name": "pytest_suite",
+      "status": "PASS"
+    },
+    {
+      "detail": {},
+      "evidence": "no container runtime is available on this host",
+      "name": "docker_build",
+      "status": "BLOCKED"
+    },
+    {
+      "detail": {},
+      "evidence": "the development, prospective, external and calibration cohorts are held by the originating sites and were not downloaded, so no cohort-level endpoint was recomputed",
+      "name": "private_cohort_endpoints",
+      "status": "NOT_RUN"
+    },
+    {
+      "detail": {},
+      "evidence": "the thoracic CT encoder checkpoint is not redistributable with this release, so the frozen-encoder comparison is blocked at the weight level",
+      "name": "pretrained_encoder_weights",
+      "status": "BLOCKED"
+    }
+  ],
+  "dependency_versions": {
+    "numpy": "2.4.3",
+    "python": "3.14.0",
+    "scipy": "1.17.1",
+    "sklearn": "1.8.0",
+    "torch": "2.11.0"
+  },
+  "failed_checks": [],
+  "integrity_manifest": "integrity_manifest.json is written after this report and after the plain-text summary, covers every tracked file including this report, and excludes only itself",
+  "overall": "PARTIALLY_VERIFIED",
+  "scope": "local source, generated stand-in cohort and closed-form references",
+  "status_counts": {
+    "BLOCKED": 2,
+    "FAIL": 0,
+    "NOT_RUN": 2,
+    "PASS": 37
+  },
+  "unverified_reasons": [
+    "the 4 recorded collection links were not probed: reachability is a property of the network rather than of the release, so the live probe is off by default and pass --probe-links to probe them from this host",
+    "no container runtime is available on this host",
+    "the development, prospective, external and calibration cohorts are held by the originating sites and were not downloaded, so no cohort-level endpoint was recomputed",
+    "the thoracic CT encoder checkpoint is not redistributable with this release, so the frozen-encoder comparison is blocked at the weight level"
+  ]
+}

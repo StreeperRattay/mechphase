@@ -1,0 +1,26 @@
+framework:
+  bulk_ratio: 10.0
+  boundary_shell: 1
+  certificate_threshold: 3.0e-12
+  certificate_ridge: 1.0e-08
+  certificate_mode: determinant
+  certificate_neighbourhood: 1
+  use_constant_phase_residual: true
+  use_scale_free_estimand: true
+  use_tissue_mass_coupling: true
+  use_continuous_field: true
+  use_identifiability_certificate: true
+  latent_dim: 96
+  encoder_width: 24
+  encoder_stages: [1, 1, 2, 2]
+  decoder_width: 96
+  decoder_depth: 3
+  encoding: fourier
+  bands: 6
+  decoder_chunk: 65536
+  classifier_hidden: 64
+  classifier_depth: 2
+  dropout: 0.1
+  correction_width: 16
+  correction_magnitude: 0.5
+  smoothness_weight: 0.001

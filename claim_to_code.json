@@ -1,0 +1,357 @@
+{
+  "claim_checks": {
+    "C1": [
+      "paper_claim_mapping",
+      "size_strata_partition"
+    ],
+    "C10": [
+      "net_benefit_independent",
+      "operating_point_independent",
+      "analysis_layer_execution"
+    ],
+    "C11": [
+      "spearman_independent",
+      "icc_two_one_independent",
+      "analysis_layer_execution"
+    ],
+    "C12": [
+      "analysis_layer_execution"
+    ],
+    "C13": [
+      "jacobian_determinant_closed_form",
+      "mass_coupling_closure",
+      "interior_residual_floor"
+    ],
+    "C14": [
+      "icc_two_one_independent"
+    ],
+    "C15": [
+      "cohort_schema_compatibility",
+      "reported_constants_match_manuscript"
+    ],
+    "C16": [
+      "holm_bonferroni_independent",
+      "operating_point_independent",
+      "analysis_layer_execution"
+    ],
+    "C17": [
+      "reported_constants_match_manuscript",
+      "analysis_layer_execution"
+    ],
+    "C2": [
+      "constant_phase_constitutive_relations",
+      "stress_scale_homogeneity",
+      "manufactured_equilibrium_solution",
+      "scale_non_identifiability",
+      "scale_free_estimand_invariance"
+    ],
+    "C3": [
+      "auc_independent_library",
+      "delong_variance_independent",
+      "delong_paired_difference_independent",
+      "holm_bonferroni_independent"
+    ],
+    "C4": [
+      "size_strata_partition",
+      "operating_point_independent",
+      "analysis_layer_execution"
+    ],
+    "C5": [
+      "component_switches_execution",
+      "loss_and_backward_execution"
+    ],
+    "C6": [
+      "analysis_layer_execution",
+      "single_batch_overfit_execution"
+    ],
+    "C7": [
+      "framework_forward_execution",
+      "checkpoint_round_trip_execution"
+    ],
+    "C8": [
+      "analysis_layer_execution",
+      "reported_constants_match_manuscript"
+    ],
+    "C9": [
+      "certificate_thresholding",
+      "certificate_sensitivity_closed_form"
+    ]
+  },
+  "claim_count": 17,
+  "claims": [
+    {
+      "id": "C1",
+      "module": "analysis.phenotype, statistics.effectsize",
+      "paper_location": "Sec. 2.1, Table 1, Fig. 1",
+      "statement": "Stage IA adenocarcinoma carries a distinct mechanical phenotype: a higher lesion-relative modulus ratio, a wider within-lesion ratio spread and a lower loss tangent.",
+      "status": "PASS",
+      "symbols": [
+        "src/mechphase/analysis/phenotype.py::phenotype_table",
+        "src/mechphase/analysis/phenotype.py::noise_floor_from_repeats",
+        "src/mechphase/statistics/effectsize.py::compare_groups",
+        "src/mechphase/statistics/effectsize.py::cohens_d"
+      ]
+    },
+    {
+      "id": "C2",
+      "module": "constitutive.homogeneity, inverse.identifiability, inverse.boundary",
+      "paper_location": "Sec. 2.2, Proposition 1, Assumptions (A1)-(A3), Sec. 3",
+      "statement": "The absolute shear modulus is not identifiable from paired phases because the boundary traction is unmeasured; the admissible estimand is the scale-free pair (rho, eta).",
+      "status": "PASS",
+      "symbols": [
+        "src/mechphase/constitutive/homogeneity.py::homogeneity_defect",
+        "src/mechphase/constitutive/homogeneity.py::scale_free_estimand",
+        "src/mechphase/constitutive/homogeneity.py::gauge_family",
+        "src/mechphase/inverse/identifiability.py::scale_invariance_report",
+        "src/mechphase/inverse/boundary.py::gauge_from_reference_traction"
+      ]
+    },
+    {
+      "id": "C3",
+      "module": "estimators.framework, statistics.delong, statistics.multiplicity",
+      "paper_location": "Sec. 2.2, Table 2, Fig. 2",
+      "statement": "On the identical analysis set the framework reaches a higher area under the curve than every pre-specified comparator, and the contrast survives the Holm-Bonferroni adjustment.",
+      "status": "PASS",
+      "symbols": [
+        "src/mechphase/estimators/framework.py::MechPhaseModel.forward",
+        "src/mechphase/statistics/delong.py::paired_contrast",
+        "src/mechphase/statistics/multiplicity.py::holm_bonferroni"
+      ]
+    },
+    {
+      "id": "C4",
+      "module": "statistics.strata",
+      "paper_location": "Sec. 2.3, Fig. 3",
+      "statement": "The increment over the radiomic comparison is largest for the smallest lesions and for pure ground-glass lesions.",
+      "status": "PASS",
+      "symbols": [
+        "src/mechphase/statistics/strata.py::assign_size_strata",
+        "src/mechphase/statistics/strata.py::assign_morphology_strata",
+        "src/mechphase/statistics/strata.py::stratum_increments",
+        "src/mechphase/statistics/strata.py::monotone_decreasing"
+      ]
+    },
+    {
+      "id": "C5",
+      "module": "analysis.ablation, estimators.framework",
+      "paper_location": "Sec. 2.3, Table 3, Table S2",
+      "statement": "Each framework component contributes to the reported area under the curve; the continuous implicit field and the certificate are within the pre-specified negligible-difference threshold.",
+      "status": "PASS",
+      "symbols": [
+        "src/mechphase/analysis/ablation.py::ablation_specs",
+        "src/mechphase/analysis/ablation.py::evaluate_ablations",
+        "src/mechphase/analysis/ablation.py::synergy",
+        "src/mechphase/analysis/ablation.py::shuffled_map"
+      ]
+    },
+    {
+      "id": "C6",
+      "module": "analysis.readers",
+      "paper_location": "Sec. 2.5, Table 4",
+      "statement": "Assisted readers gain sensitivity on the same lesions and read faster than unaided readers.",
+      "status": "PASS",
+      "symbols": [
+        "src/mechphase/analysis/readers.py::ReaderStudy.paired_sensitivity_gain",
+        "src/mechphase/analysis/readers.py::sensitivity_interval",
+        "src/mechphase/analysis/readers.py::panel_partition"
+      ]
+    },
+    {
+      "id": "C7",
+      "module": "analysis.perturbation, imaging.registration, imaging.kernel",
+      "paper_location": "Sec. 2.4, Fig. 4",
+      "statement": "Performance is stable under the pre-specified acquisition and preprocessing perturbations, with 2.0 mm registration noise the only perturbation reaching the stability tolerance.",
+      "status": "PASS",
+      "symbols": [
+        "src/mechphase/analysis/perturbation.py::apply_perturbation",
+        "src/mechphase/analysis/perturbation.py::evaluate_perturbations",
+        "src/mechphase/analysis/perturbation.py::exceeding_tolerance"
+      ]
+    },
+    {
+      "id": "C8",
+      "module": "analysis.transportability, cohort.partition",
+      "paper_location": "Sec. 2.4, Sec. 4.1",
+      "statement": "Transfer to unseen sites and regions holds without re-estimation of any variable or cut-off.",
+      "status": "PASS",
+      "symbols": [
+        "src/mechphase/analysis/transportability.py::transfer_report",
+        "src/mechphase/analysis/transportability.py::leave_one_site_out",
+        "src/mechphase/cohort/partition.py::build_index"
+      ]
+    },
+    {
+      "id": "C9",
+      "module": "inverse.certificate, analysis.enumeration",
+      "paper_location": "Sec. 2.2, Sec. 2.7, Fig. 5, Table S5",
+      "statement": "The identifiability certificate abstains on genuinely harder cases rather than decoratively.",
+      "status": "PASS",
+      "symbols": [
+        "src/mechphase/inverse/certificate.py::residual_sensitivity",
+        "src/mechphase/inverse/certificate.py::certificate_field",
+        "src/mechphase/inverse/certificate.py::certificate_decision",
+        "src/mechphase/analysis/enumeration.py::certificate_behaviour"
+      ]
+    },
+    {
+      "id": "C10",
+      "module": "statistics.decision",
+      "paper_location": "Sec. 2.7, Fig. 6",
+      "statement": "Decision-curve analysis gives a net benefit above the radiomic comparator and above both default strategies across the clinically relevant threshold range.",
+      "status": "PASS",
+      "symbols": [
+        "src/mechphase/statistics/decision.py::net_benefit",
+        "src/mechphase/statistics/decision.py::decision_curve",
+        "src/mechphase/statistics/decision.py::exceeds_both_strategies"
+      ]
+    },
+    {
+      "id": "C11",
+      "module": "cohort.reference, statistics.agreement",
+      "paper_location": "Sec. 4.5, Sec. 2.7",
+      "statement": "The recovered field is consistent with two references outside the imaging pipeline: the regional compliance of the respiration-resolved calibration stratum and the published ex vivo range.",
+      "status": "PASS",
+      "symbols": [
+        "src/mechphase/cohort/reference.py::reference_report",
+        "src/mechphase/cohort/reference.py::spearman_association",
+        "src/mechphase/statistics/agreement.py::icc_two_one"
+      ]
+    },
+    {
+      "id": "C12",
+      "module": "analysis.invitro",
+      "paper_location": "Sec. 2.6, Sec. 4.6",
+      "statement": "In vitro measurements on malignant and non-malignant lung epithelial cell lines show the same direction of the loss-tangent difference as the imaging phenotype.",
+      "status": "PASS",
+      "symbols": [
+        "src/mechphase/analysis/invitro.py::in_vitro_report",
+        "src/mechphase/analysis/invitro.py::direction_consistency",
+        "src/mechphase/analysis/invitro.py::one_way_anova"
+      ]
+    },
+    {
+      "id": "C13",
+      "module": "analysis.enumeration, operators.jacobian",
+      "paper_location": "Sec. 2.2, Table S4",
+      "statement": "Diagnostic failures fall into four audited classes, each with a named audit.",
+      "status": "PASS",
+      "symbols": [
+        "src/mechphase/analysis/enumeration.py::failure_mode_table",
+        "src/mechphase/operators/jacobian.py::violation_count",
+        "src/mechphase/inverse/massbalance.py::subsolid_class_b"
+      ]
+    },
+    {
+      "id": "C14",
+      "module": "statistics.agreement",
+      "paper_location": "Sec. 2.7, Table S7",
+      "statement": "The repeat subset supports the reproducibility floor for both recovered quantities.",
+      "status": "PASS",
+      "symbols": [
+        "src/mechphase/statistics/agreement.py::agreement_report",
+        "src/mechphase/statistics/agreement.py::meets_reproducibility_floor",
+        "src/mechphase/analysis/phenotype.py::reproducibility"
+      ]
+    },
+    {
+      "id": "C15",
+      "module": "cohort.schema, cohort.partition, cohort.manifest",
+      "paper_location": "Sec. 4.1, Table S5",
+      "statement": "The prospective arm holds 1,247 records partitioned into 382 stage IA, 738 benign and 127 stage IB-IIIA, and the calibration stratum is excluded from every diagnostic endpoint.",
+      "status": "PASS",
+      "symbols": [
+        "src/mechphase/cohort/schema.py::CohortConstants",
+        "src/mechphase/cohort/partition.py::prospective_composition",
+        "src/mechphase/cohort/partition.py::assert_reported_totals",
+        "src/mechphase/cohort/manifest.py::SyntheticCohort.analysis_indices"
+      ]
+    },
+    {
+      "id": "C16",
+      "module": "analysis.enumeration, statistics.*",
+      "paper_location": "Sec. 4.7, Table S7",
+      "statement": "The statistical test inventory assigns each question its test and, where pre-specified, its multiplicity correction.",
+      "status": "PASS",
+      "symbols": [
+        "src/mechphase/analysis/enumeration.py::statistical_test_inventory",
+        "src/mechphase/statistics/multiplicity.py::contrast_table",
+        "src/mechphase/statistics/roc.py::operating_point"
+      ]
+    },
+    {
+      "id": "C17",
+      "module": "analysis.enumeration, loop.parallel",
+      "paper_location": "Table S8",
+      "statement": "Compute, wall-clock and emissions accounting is reported honestly for the training and inference accelerators.",
+      "status": "PASS",
+      "symbols": [
+        "src/mechphase/analysis/enumeration.py::compute_accounting",
+        "src/mechphase/loop/parallel.py::device_summary"
+      ]
+    }
+  ],
+  "code_symbol_count": 57,
+  "deviations": [
+    {
+      "departure": "The bulk response is written as a multiple of the shear modulus rather than as a fixed bulk modulus, so that the whole stress is homogeneous of degree one in the modulus, which is exactly the condition Proposition 1 relies on.",
+      "justification": "A fixed bulk modulus breaks sigma(cG, eta) = c sigma(G, eta).",
+      "paper_location": "Assumption (A1), Proposition 1",
+      "topic": "isotropic part of the stress"
+    },
+    {
+      "departure": "The residual energy and the mass-coupling term are evaluated with a one-voxel boundary shell excluded.",
+      "justification": "The boundary traction is unmeasured, and the one-sided stencil at the shell is not the interior equilibrium equation.",
+      "paper_location": "Assumption (A3)",
+      "topic": "residual domain"
+    },
+    {
+      "departure": "A schema-compatible generator stands in for the private cohorts. Its deformation is a uniaxial state whose axial stiffness product is constant along the deformation axis, the modulus is defined on the same stencil the residual uses, and the expiratory density follows from mass conservation.",
+      "justification": "The clinical cohorts are private; the generator makes every mechanism executable and keeps the mechanical ground truth in closed form.",
+      "paper_location": "Sec. 4.1",
+      "topic": "stand-in cohort"
+    },
+    {
+      "departure": "The generated loss tangent is constant per record by default, with an optional smooth ripple.",
+      "justification": "For the uniaxial ansatz the imaginary part of the equilibrium condition forces the loss tangent to be constant along the deformation axis, so a spatially varying tangent would leave a residual floor rather than an exact state.",
+      "paper_location": "Sec. 4.1",
+      "topic": "loss tangent of the stand-in cohort"
+    },
+    {
+      "departure": "The relative weights of the objective terms are engineering defaults exposed in the training configuration.",
+      "justification": "The manuscript states the objective's components but does not print the weights.",
+      "paper_location": "Sec. 4.5",
+      "topic": "objective weights"
+    },
+    {
+      "departure": "The certificate threshold and ridge are engineering defaults exposed in the model configuration.",
+      "justification": "The manuscript reports the abstention rate and the certified fractions but not the numeric threshold of the Fisher statistic.",
+      "paper_location": "Sec. 2.2, Table S5",
+      "topic": "certificate threshold"
+    },
+    {
+      "departure": "The per-site counts of the development arm and the voxel spacing are engineering defaults supplied by configuration.",
+      "justification": "The manuscript reports the prospective and external site counts and the arm composition but not the development counts or the spacing.",
+      "paper_location": "Sec. 4.1, Sec. 4.2",
+      "topic": "development-arm sizes and voxel spacing"
+    },
+    {
+      "departure": "The Brock/PanCan risk model and the Lung-RADS lexicon are implemented with coefficient vectors and a category table that are engineering defaults.",
+      "justification": "The manuscript cites the instruments but does not reproduce their coefficients.",
+      "paper_location": "Table 2, Sec. 4.4",
+      "topic": "clinical instrument coefficients"
+    },
+    {
+      "departure": "The encoder architecture and its masked-reconstruction objective ship with the release; no pretrained checkpoint is bundled and pretrained_path is null.",
+      "justification": "The thoracic CT checkpoint is not redistributable.",
+      "paper_location": "Sec. 4.4, Code availability statement",
+      "topic": "encoder weights"
+    },
+    {
+      "departure": "The comparator implementations share the schedule, augmentations and data split of the framework but are exercised on the stand-in cohort only.",
+      "justification": "The reported comparator areas were measured on the private cohorts, which are not available here; the comparator rows are therefore reported as not run.",
+      "paper_location": "Sec. 4.4, Table 2",
+      "topic": "comparator training"
+    }
+  ],
+  "overall": "VERIFIED"
+}

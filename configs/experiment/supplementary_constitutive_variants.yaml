@@ -1,0 +1,30 @@
+name: supplementary_constitutive_variants
+defaults:
+  - model/mechphase.yaml
+  - data/cohort.yaml
+  - train/default.yaml
+sweep:
+  bulk_ratio: [1.0, 5.0, 10.0, 50.0, 100.0]
+  report: constitutive_sensitivity
+provenance:
+  from_manuscript:
+    negligible_difference: 0.03
+    primary_auc_criterion: 0.900
+    primary_sensitivity_criterion: 85.0
+    minimal_clinical_difference: 5.0
+    decision_threshold_probability: 0.20
+    stability_cutoff_range: [0.40, 0.50]
+    stability_auc_drift: 0.01
+    comparator_contrasts: 8
+    repeat_window_days: 30
+    follow_up_months: 24
+    jacobian_audit_tolerance: 0.35
+    training_world_size: 4
+    inference_seconds_per_examination: 6.2
+    training_wall_clock_hours: 38
+  engineering_defaults:
+    - learning_rate, warmup_steps, weight_decay, optimizer, schedule and precision are not printed in the manuscript
+    - batch_size, epochs and gradient accumulation are not printed in the manuscript
+    - the relative weights of the objective terms are not printed in the manuscript
+    - the certificate threshold and ridge are not printed in the manuscript; the threshold is set so that the voxel-level certified fraction on the generated cohort tracks the reported validated share
+    - the voxel spacing and the development-arm per-site counts are not printed in the manuscript

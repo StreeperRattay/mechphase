@@ -1,0 +1,105 @@
+mechphase verification summary
+==============================
+
+overall                     PARTIALLY_VERIFIED
+scope                       local source, generated stand-in cohort and closed-form references
+checks                      41
+
+Checks
+------
+name                                 status
+-------------------------------------------
+paper_claim_mapping                  PASS
+claim_symbol_resolution              PASS
+reported_constants_match_manuscript  PASS
+constant_phase_constitutive_relations PASS
+stress_scale_homogeneity             PASS
+manufactured_equilibrium_solution    PASS
+scale_non_identifiability            PASS
+jacobian_determinant_closed_form     PASS
+mass_coupling_closure                PASS
+interior_residual_floor              PASS
+scale_free_estimand_invariance       PASS
+certificate_thresholding             PASS
+certificate_sensitivity_closed_form  PASS
+auc_independent_library              PASS
+delong_variance_independent          PASS
+delong_paired_difference_independent PASS
+holm_bonferroni_independent          PASS
+icc_two_one_independent              PASS
+operating_point_independent          PASS
+net_benefit_independent              PASS
+standardised_difference_independent  PASS
+spearman_independent                 PASS
+size_strata_partition                PASS
+radiomic_descriptor_extraction       PASS
+cohort_schema_compatibility          PASS
+generator_closure                    PASS
+analysis_layer_execution             PASS
+framework_forward_execution          PASS
+component_switches_execution         PASS
+loss_and_backward_execution          PASS
+parameter_update_execution           PASS
+checkpoint_round_trip_execution      PASS
+single_batch_overfit_execution       PASS
+minimal_training_loop_execution      PASS
+public_dataset_links                 NOT_RUN
+ruff                                 PASS
+mypy_strict                          PASS
+pytest_suite                         PASS
+docker_build                         BLOCKED
+private_cohort_endpoints             NOT_RUN
+pretrained_encoder_weights           BLOCKED
+
+Status counts
+-------------
+PASS                         37
+FAIL                         0
+NOT_RUN                      2
+BLOCKED                      2
+
+Outstanding items
+-----------------
+- public_dataset_links: the 4 recorded collection links were not probed: reachability is a property of the network rather than of the release, so the live probe is off by default and pass --probe-links to probe them from this host
+- docker_build: no container runtime is available on this host
+- private_cohort_endpoints: the development, prospective, external and calibration cohorts are held by the originating sites and were not downloaded, so no cohort-level endpoint was recomputed
+- pretrained_encoder_weights: the thoracic CT encoder checkpoint is not redistributable with this release, so the frozen-encoder comparison is blocked at the weight level
+
+Claim-to-code map
+=================
+
+overall                     VERIFIED
+claims                      17
+
+claim             status                          paper                                   
+------------------------------------------------------------------------------------------
+C1                PASS                            Sec. 2.1, Table 1, Fig. 1               
+C2                PASS                            Sec. 2.2, Proposition 1, Assumptions (A1
+C3                PASS                            Sec. 2.2, Table 2, Fig. 2               
+C4                PASS                            Sec. 2.3, Fig. 3                        
+C5                PASS                            Sec. 2.3, Table 3, Table S2             
+C6                PASS                            Sec. 2.5, Table 4                       
+C7                PASS                            Sec. 2.4, Fig. 4                        
+C8                PASS                            Sec. 2.4, Sec. 4.1                      
+C9                PASS                            Sec. 2.2, Sec. 2.7, Fig. 5, Table S5    
+C10               PASS                            Sec. 2.7, Fig. 6                        
+C11               PASS                            Sec. 4.5, Sec. 2.7                      
+C12               PASS                            Sec. 2.6, Sec. 4.6                      
+C13               PASS                            Sec. 2.2, Table S4                      
+C14               PASS                            Sec. 2.7, Table S7                      
+C15               PASS                            Sec. 4.1, Table S5                      
+C16               PASS                            Sec. 4.7, Table S7                      
+C17               PASS                            Table S8                                
+
+Deviations
+----------
+- isotropic part of the stress: The bulk response is written as a multiple of the shear modulus rather than as a fixed bulk modulus, so that the whole stress is homogeneous of degree one in the modulus, which is exactly the condition Proposition 1 relies on.
+- residual domain: The residual energy and the mass-coupling term are evaluated with a one-voxel boundary shell excluded.
+- stand-in cohort: A schema-compatible generator stands in for the private cohorts. Its deformation is a uniaxial state whose axial stiffness product is constant along the deformation axis, the modulus is defined on the same stencil the residual uses, and the expiratory density follows from mass conservation.
+- loss tangent of the stand-in cohort: The generated loss tangent is constant per record by default, with an optional smooth ripple.
+- objective weights: The relative weights of the objective terms are engineering defaults exposed in the training configuration.
+- certificate threshold: The certificate threshold and ridge are engineering defaults exposed in the model configuration.
+- development-arm sizes and voxel spacing: The per-site counts of the development arm and the voxel spacing are engineering defaults supplied by configuration.
+- clinical instrument coefficients: The Brock/PanCan risk model and the Lung-RADS lexicon are implemented with coefficient vectors and a category table that are engineering defaults.
+- encoder weights: The encoder architecture and its masked-reconstruction objective ship with the release; no pretrained checkpoint is bundled and pretrained_path is null.
+- comparator training: The comparator implementations share the schedule, augmentations and data split of the framework but are exercised on the stand-in cohort only.

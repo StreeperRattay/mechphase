@@ -1,0 +1,75 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mechphase"
+version = "1.0.0"
+description = "Constant-phase mechanical property mapping from paired inspiratory and expiratory CT"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { file = "LICENSE" }
+authors = [{ name = "Lung Mechanical Property Mapping authors" }]
+dependencies = [
+    "numpy>=2.0,<3",
+    "scipy>=1.14,<2",
+    "scikit-learn>=1.5,<2",
+    "torch>=2.4,<3",
+    "PyYAML>=6.0,<7",
+]
+
+[project.optional-dependencies]
+plots = ["matplotlib>=3.8,<4"]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+    "ruff>=0.6",
+    "black>=24.0",
+    "isort>=5.13",
+    "mypy>=1.11",
+    "pre-commit>=3.7",
+]
+
+[project.scripts]
+mechphase-fit = "mechphase.harness.fit:main"
+mechphase-score = "mechphase.harness.score:main"
+mechphase-audit = "mechphase.harness.audit:main"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP", "B", "A", "C4", "SIM", "RET", "ARG", "PTH", "RUF"]
+ignore = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["ARG001", "ARG002"]
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]
+
+[tool.isort]
+profile = "black"
+line_length = 100
+known_first_party = ["mechphase"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+files = ["src/mechphase"]
+ignore_missing_imports = true
+warn_unreachable = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+filterwarnings = ["ignore::DeprecationWarning"]

@@ -1,0 +1,21 @@
+cohort:
+  shape: [40, 32, 32]
+  spacing_mm: [1.0, 1.0, 1.0]
+  parenchyma_modulus: 2.0
+  bulk_ratio: 10.0
+  traction: 1.0
+  modulus_texture: 0.04
+  lesion_margin: 0.35
+  modulus_floor: 0.001
+  registration_floor: 0.05
+  registration_scale: 0.5
+  certificate_threshold: 3.0e-12
+  certificate_ridge: 1.0e-08
+  certificate_mode: determinant
+  certificate_neighbourhood: 1
+  boundary_shell: 1
+  motion_sigma: 0.0
+  follow_up_fraction: 0.32
+  development_per_site: 240
+  seed: 20260925
+  dtype: float64

@@ -1,0 +1,31 @@
+training:
+  epochs: 3
+  batch_size: 2
+  grad_accumulation: 1
+  world_size: 1
+  dataset_size: 4
+  learning_rate: 0.005
+  warmup_steps: 1
+  weight_decay: 0.0
+  momentum: 0.9
+  optimizer: adamw
+  schedule: cosine
+  minimum_factor: 0.0
+  precision: fp32
+  gradient_clip: 1.0
+  ema: false
+  ema_decay: 0.9
+  ema_warmup: 0
+  log_every: 1
+  evaluation_every: 1
+  early_stop_patience: 0
+  seed: 20260925
+
+objective:
+  classification: 1.0
+  constant_phase_residual: 0.3
+  tissue_mass_coupling: 0.5
+  field_smoothness: 0.001
+  scale_free_gauge: 0.01
+  certified_only: false
+  label_smoothing: 0.0
